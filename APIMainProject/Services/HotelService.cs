@@ -1,4 +1,5 @@
-﻿using APIMainProject.Models;
+﻿using APIMainProject.Interface;
+using APIMainProject.Models;
 using APIMainProject.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +7,9 @@ namespace APIMainProject.Services
 {
     public class HotelService
     {
-        private readonly HotelRepository _repository;
+        private readonly IHotel _repository;
 
-        public HotelService(HotelRepository repository)
+        public HotelService(IHotel repository)
         {
             this._repository = repository;
         }
@@ -36,6 +37,11 @@ namespace APIMainProject.Services
         public async Task<Hotel> UpdateHotelsAsync(int id, Hotel hotel)
         {
             return await _repository.UpdateHotels(id, hotel);
+        }
+
+        public async Task<IEnumerable<Hotel>> SearchHotelsAsync(string keyword)
+        {
+            return await _repository.SearchHotels(keyword);
         }
     }
 }

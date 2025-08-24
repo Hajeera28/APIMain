@@ -174,3 +174,4 @@ C:\Users\User\Source\Repos\APIMainProject\APIMainProject\obj\Debug\net8.0\refint
 C:\Users\User\Source\Repos\APIMainProject\APIMainProject\obj\Debug\net8.0\APIMainProject.pdb
 C:\Users\User\Source\Repos\APIMainProject\APIMainProject\obj\Debug\net8.0\APIMainProject.genruntimeconfig.cache
 C:\Users\User\Source\Repos\APIMainProject\APIMainProject\obj\Debug\net8.0\ref\APIMainProject.dll
+C:\Users\User\Source\Repos\APIMainProject\APIMainProject\obj\Debug\net8.0\APIMainProject.sourcelink.json

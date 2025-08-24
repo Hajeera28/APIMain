@@ -18,26 +18,6 @@ namespace APIMainProject.Controllers
             this._res = res;
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<Order> AddOrdersAsync(OrderDto dto)
-        {
-            Order ord = new Order
-            {
-                OrderDate = dto.OrderDate,
-                OrderTime=dto.OrderTime,
-                Status=dto.Status,
-            };
-            return await _res.AddOrdersAsync(ord);
-        }
-
-        [HttpDelete]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<Order> DeleteOrdersAsync(int id)
-        {
-            return await _res.DeleteOrdersAsync(id);
-        }
-
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
@@ -52,11 +32,32 @@ namespace APIMainProject.Controllers
             return await _res.GetOrderByIdAsync(id);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<Order> AddOrdersAsync(OrderDto dto)
+        {
+            Order ord = new Order
+            {
+                OrderDate = dto.OrderDate,
+                OrderTime = dto.OrderTime,
+                Status = dto.Status,
+            };
+            return await _res.AddOrdersAsync(ord);
+        }
+
         [HttpPut]
         [Authorize(Roles = "Admin,Customer")]
         public async Task<Order> UpdateOrders(int id, Order order)
         {
             return await _res.UpdateOrdersAsync(id, order);
+        }
+
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<Order> DeleteOrdersAsync(int id)
+        {
+            return await _res.DeleteOrdersAsync(id);
         }
     }
 }

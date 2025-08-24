@@ -1,4 +1,5 @@
-﻿using APIMainProject.Models;
+﻿using APIMainProject.Interface;
+using APIMainProject.Models;
 using APIMainProject.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +7,9 @@ namespace APIMainProject.Services
 {
     public class UserService
     {
-        private readonly UserRepository _repository;
+        private readonly IUser _repository;
 
-        public UserService(UserRepository repository)
+        public UserService(IUser repository)
         {
             this._repository = repository;
         }
@@ -32,5 +33,10 @@ namespace APIMainProject.Services
         {
             return await _repository.UpdateUsers(id, user);
         }
+        public async Task<IEnumerable<User?>> SearchUsers(string keyword)
+        {
+            return await _repository.SearchUsers(keyword);
+        }
+
     }
 }

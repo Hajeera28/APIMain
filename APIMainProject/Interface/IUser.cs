@@ -9,5 +9,7 @@ namespace APIMainProject.Interface
         Task<User> AddUsers(User user);
         Task<User> UpdateUsers(int id,User user);
         Task<User> DeleteUsers(int id);
+
+        Task<IEnumerable<User?>> SearchUsers(string keyword);
     }
 }

@@ -33,6 +33,12 @@ namespace APIMainProject.Controllers
             return await _res.GetHotelByIdAsync(id);
         }
 
+        [HttpGet("search")]
+        public async Task<IEnumerable<Hotel?>> SearchHotels([FromQuery] string keyword)
+        {
+            return await _res.SearchHotelsAsync(keyword);
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<Hotel> AddHotel(HotelDtocs dto)
@@ -59,5 +65,6 @@ namespace APIMainProject.Controllers
         {
             return await _res.DeleteHotelsAsync(id);
         }
+      
     }
 }

@@ -18,31 +18,7 @@ namespace APIMainProject.Controllers
             this._res = res;
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<User> AddUsers(UserDto dto)
-        {
-            User usr = new User { 
-            UserName=dto.UserName,
-            Email=dto.Email,
-            Password=dto.Password,
-            Phone=dto.Phone,
-            };
-            return await _res.AddUsersAsync(usr);
-        }
-        [HttpDelete]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<User> DeleteUsers(int id)
-        {
-            return await _res.DeleteUsersAsync(id);
-        }
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<User> GetUserById(int id)
-        {
-            return await _res.GetUserByIdAsync(id);
-        }
-
+       
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<User>> GetAllUsers()
@@ -50,11 +26,49 @@ namespace APIMainProject.Controllers
             return await _res.GetAllUsersAsync();
         }
 
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<User> GetUserById(int id)
+        {
+            return await _res.GetUserByIdAsync(id);
+        }
+
+        [HttpGet("search")]
+        public async Task<IEnumerable<User?>> SearchUsers([FromQuery] string keyword)
+        {
+            return await _res.SearchUsers(keyword);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<User> AddUsers(UserDto dto)
+        {
+            User usr = new User
+            {
+                UserName = dto.UserName,
+                Email = dto.Email,
+                Password = dto.Password,
+                Phone = dto.Phone,
+            };
+            return await _res.AddUsersAsync(usr);
+        }
+
+
         [HttpPut]
         [Authorize(Roles = "Admin,Customer")]
         public async Task<User> UpdateUsers(int id, User user)
         {
             return await _res.UpdateUsersAsync(id, user);
         }
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<User> DeleteUsers(int id)
+        {
+            return await _res.DeleteUsersAsync(id);
+        }
+
+
+
     }
 }

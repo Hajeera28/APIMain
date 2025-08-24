@@ -129,6 +129,32 @@
     ]
   },
   {
+    "ContainingType": "APIMainProject.Controllers.HotelController",
+    "Method": "SearchHotels",
+    "RelativePath": "api/Hotel/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIMainProject.Models.Hotel, APIMainProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "APIMainProject.Controllers.OrderController",
     "Method": "AddOrdersAsync",
     "RelativePath": "api/Order",
@@ -137,8 +163,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "order",
-        "Type": "APIMainProject.Models.Order",
+        "Name": "dto",
+        "Type": "APIMainProject.DTO.OrderDto",
         "IsRequired": true
       }
     ],
@@ -286,8 +312,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderdetail",
-        "Type": "APIMainProject.Models.OrderDetail",
+        "Name": "dto",
+        "Type": "APIMainProject.DTO.OrderDetailDto",
         "IsRequired": true
       }
     ],
@@ -411,8 +437,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "APIMainProject.Models.User",
+        "Name": "dto",
+        "Type": "APIMainProject.DTO.UserDto",
         "IsRequired": true
       }
     ],
@@ -522,6 +548,32 @@
     "ReturnTypes": [
       {
         "Type": "APIMainProject.Models.User",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APIMainProject.Controllers.UserController",
+    "Method": "SearchUsers",
+    "RelativePath": "api/User/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APIMainProject.Models.User, APIMainProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

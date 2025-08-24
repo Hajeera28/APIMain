@@ -70,5 +70,21 @@ namespace APIMainProject.Repository
             }
             return res;
         }
+
+        public async Task<IEnumerable<Hotel?>> SearchHotels(string keyword)
+        {
+            var res = await _hotelorder.Hotels
+                .Where(h => h.HotelName.Contains(keyword) ||
+                            h.Location.Contains(keyword) ||
+                            h.Contact.Contains(keyword))
+                .Include(h => h.Orders)                     // Load Orders
+            .ThenInclude(o => o.User)               // Load User inside Orders
+        .Include(h => h.Orders)
+            .ThenInclude(o => o.OrderDetails)
+                .ToListAsync();
+
+            return res;
+        }
+
     }
 }

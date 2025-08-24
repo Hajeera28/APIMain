@@ -9,5 +9,7 @@ namespace APIMainProject.Interface
         Task<Hotel> AddHotels(Hotel hotel);
         Task<Hotel> UpdateHotels(int id, Hotel hotel);
         Task<Hotel> DeleteHotels(int id);
+
+        Task<IEnumerable<Hotel>> SearchHotels(string keyword);
     }
 }

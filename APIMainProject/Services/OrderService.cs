@@ -1,4 +1,5 @@
-﻿using APIMainProject.Models;
+﻿using APIMainProject.Interface;
+using APIMainProject.Models;
 using APIMainProject.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +7,9 @@ namespace APIMainProject.Services
 {
     public class OrderService
     {
-        private readonly OrderRepository _repository;
+        private readonly IOrder _repository;
 
-        public OrderService(OrderRepository repository)
+        public OrderService(IOrder repository)
         {
             this._repository = repository;
         }

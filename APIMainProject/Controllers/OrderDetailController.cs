@@ -45,12 +45,6 @@ namespace APIMainProject.Controllers
             };
             return await _res.AddOrderDetailsAsync(orddet);
         }
-        [HttpDelete]
-        [Authorize(Roles = "Admin,Customer")]
-        public async Task<OrderDetail> DeleteOrderDetails(int id)
-        {
-            return await _res.DeleteOrderDetailsAsync(id);
-        }
 
         [HttpPut]
         [Authorize(Roles = "Admin,Customer")]
@@ -59,6 +53,14 @@ namespace APIMainProject.Controllers
             return await _res.UpdateOrderDetailsAsync(id, orderDetail);
         }
 
+        [HttpDelete]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<OrderDetail> DeleteOrderDetails(int id)
+        {
+            return await _res.DeleteOrderDetailsAsync(id);
+        }
+
+       
 
     }
 }

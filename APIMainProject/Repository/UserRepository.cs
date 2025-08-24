@@ -70,5 +70,21 @@ namespace APIMainProject.Repository
             await _hotelorderContext.SaveChangesAsync();
             return res;
         }
+
+        public async Task<IEnumerable<User>> SearchUsers(string keyword)
+        {
+            var res = await _hotelorderContext.Users
+                .Include(u => u.Orders)
+                    .ThenInclude(o => o.Hotel)
+                .Include(u => u.Orders)
+                    .ThenInclude(o => o.OrderDetails)
+                .Where(u => u.UserName.Contains(keyword)
+                         || u.Email.Contains(keyword)
+                         || u.Phone.Contains(keyword))
+                .ToListAsync();
+
+            return res;
+        }
+
     }
 }

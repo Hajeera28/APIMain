@@ -1,4 +1,5 @@
-﻿using APIMainProject.Models;
+﻿using APIMainProject.Interface;
+using APIMainProject.Models;
 using APIMainProject.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +7,9 @@ namespace APIMainProject.Services
 {
     public class OrderDetailService
     {
-        private readonly OrderDetailRepository _repository;
+        private readonly IOrderDetail _repository;
 
-        public OrderDetailService(OrderDetailRepository repository)
+        public OrderDetailService(IOrderDetail repository)
         {
             this._repository = repository;
         }
